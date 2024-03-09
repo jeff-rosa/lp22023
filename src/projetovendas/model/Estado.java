@@ -16,10 +16,10 @@ import java.util.logging.Logger;
  *
  * @author aluno
  */
-public class Cidade implements IOperacao {
+public class Estado implements IOperacao {
 
     private String nome;
-    private int codibge;
+    private String SiglaEstado;
     
     private Statement mysqStatement = null;
 
@@ -32,18 +32,19 @@ public class Cidade implements IOperacao {
         this.nome = nome;
     }
 
-    public int getCodibge() {
-        return codibge;
+    public String getSiglaEstado() {
+        return SiglaEstado;
     }
 
-    public void setCodibge(int codibge) {
-        this.codibge = codibge;
+    public void setSiglaEstado(String SiglaEstado) {
+        this.SiglaEstado = SiglaEstado;
     }
 
     @Override
     public void cadastrar() {
-         String insert  = "insert into cidade(nome, cod_ibge) "
-                + "values('"+getNome()+"','"+getCodibge()+"')";
+         String insert  = "insert into estado(nomeEstado, siglaEstado) "
+                + "values('"+getNome()+"','"+getSiglaEstado()+"')";
+         System.out.println(" "+insert);
          mysqStatement = ConexaoDB.getStatement();
          
         try {
@@ -72,7 +73,7 @@ public class Cidade implements IOperacao {
 
     @Override
     public String toString() {
-        return "Cidade{" + "nome=" + nome + ", codibge=" + codibge + '}';
+        return "estado{" + "nome=" + nome + ", SiglaEstado=" + SiglaEstado + '}';
     }
     
     
